@@ -27,16 +27,26 @@ const ExpenseForm = () => {
       return { ...prevState, enteredDate: event.target.value };
     });
   };
+  const submitHandler = (event) => {
+    event.preventDefault(); // stay on current page
+    const expenseData = {
+      title: userInput.enteredTitle,
+      amount: userInput.enteredAmount,
+      date: new Date(userInput.enteredDate),
+    };
+
+    console.log(expenseData);
+  };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label>{userInput.enteredTitle}</label>
+          <label>Title</label>
           <input type="text" onChange={titleChangeHandler} />
         </div>
         <div className="new-expense__control">
-          <label>${userInput.enteredAmount}</label>
+          <label>Amount</label>
           <input
             type="number"
             min="0.01"
@@ -45,7 +55,7 @@ const ExpenseForm = () => {
           />
         </div>
         <div className="new-expense__control">
-          <label>{userInput.enteredDate}</label>
+          <label>Date</label>
           <input
             type="date"
             min="2019-01-021"
