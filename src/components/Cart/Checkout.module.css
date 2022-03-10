@@ -1,7 +1,9 @@
 .form {
+  list-style: none;
   margin: 1rem 0;
+  padding: 1 rem 0;
   height: 19rem;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .control {
